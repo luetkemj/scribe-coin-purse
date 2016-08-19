@@ -1,0 +1,9 @@
+parser: "babel-eslint"
+extends: "airbnb"
+rules:
+  global-require: 0
+  import/prefer-default-export: 0
+  # https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+  import/no-extraneous-dependencies: [2, {}]
+  no-else-return: 0
+  no-underscore-dangle: 0
