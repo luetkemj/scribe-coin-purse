@@ -30,8 +30,41 @@ const denominations = {
   },
 };
 
-export function copperValue(amount, denomination) {
-  const coppers = amount * denominations[denomination].copperValue;
+export function parser(exp) {
+  // parse value/denomination pairs
+  const regexVDP = /([0-9]+[a-z]{2})/gi;
+
+  // parse value from value/denomination pairs
+  const regexV = /([0-9]*)/;
+
+  // parse denomination from value/denomination pairs
+  const regexD = /[a-z]{2}/i;
+
+  const array = [];
+
+  let m;
+
+  do {
+    m = regexVDP.exec(exp);
+    if (m) {
+      const o = {};
+      o.match = m[0];
+      o.value = regexV.exec(m[0])[0];
+      o.denomination = regexD.exec(m[0])[0].toUpperCase();
+      array.push(o);
+    }
+  } while (m);
+
+  return array;
+}
+
+export function copperValue(exp) {
+  const parsedCoins = parser(exp);
+  let coppers = 0;
+
+  for (const coin of parsedCoins) {
+    coppers += (coin.value * denominations[coin.denomination].copperValue);
+  }
 
   return coppers;
 }
@@ -68,9 +101,7 @@ export function subUnits(coppers) {
 }
 
 /*
- * TODO: parse() parse coin phrase for use in functions ex:'12CP 2GP' => {CP: 12, GP: 2}
- *
- * TODO: Add different coinage together for a total in copperValue func
+ * TODO: Break functions and tests in to seperate files for easier maintainability.
  *
  * TODO: Add dnd coins as defaults that can be overridden so this could work in any economy.
  */
