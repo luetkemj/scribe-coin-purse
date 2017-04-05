@@ -62,9 +62,9 @@ export function copperValue(exp) {
   const parsedCoins = parser(exp);
   let coppers = 0;
 
-  for (const coin of parsedCoins) {
+  _.each(parsedCoins, (coin) => {
     coppers += (coin.value * denominations[coin.denomination].copperValue);
-  }
+  });
 
   return coppers;
 }
@@ -94,7 +94,7 @@ export function subUnits(coppers) {
     change %= denominations[coin].copperValue;
 
     // move cursor to next denomination
-    cursor--;
+    cursor -= 1;
   } while (cursor > -1);
 
   return purse;

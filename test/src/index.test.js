@@ -27,7 +27,7 @@ describe('copperValue', () => {
     should(expected).equal(actual);
   });
 
-  it('should find the correct copperValue in teh phrase "This sword is worth 20gp"', () => {
+  it('should find the correct copperValue in the phrase "This sword is worth 20gp"', () => {
     const expected = 2000;
     const actual = coins.copperValue('This sword is worth 20gp');
 
