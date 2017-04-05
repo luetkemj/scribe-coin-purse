@@ -1,10 +1,10 @@
 {
   "name": "scribe-rpg-coin-purse",
   "version": "1.0.0",
-  "description": "Fantasy RPG Currency Exhange",
+  "description": "Fantasy RPG Currency Exchange",
   "repository": {
     "type": "git",
-    "url": "https://github.com/luetkemj/scribe-name-generator.git"
+    "url": "https://github.com/luetkemj/scribe-coin-purse.git"
   },
   "author": "luetkemj",
   "license": {
