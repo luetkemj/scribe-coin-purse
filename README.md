@@ -8,12 +8,6 @@ A Fantasy RPG Currency Exchange.
 
 `npm install --save scribe-rpg-coin-purse`
 
-## Usage
-
-**es5**: `var coinPurse = require("scribe-rpg-coin-purse")`
-
-**es6** `import * as coinPurse from 'scribe-rpg-coin-purse';`
-
 ## Features
 
 This project makes it easy to:
@@ -25,14 +19,18 @@ This project makes it easy to:
 #### copperValue(string);
 Returns the total coin value in copper
 ```javascript
+import { copperValue } from 'scribe-rpg-coin-purse';
+
 coinPurse.copperValue('3GP, 4cp'); // => 304
 ```
 
 #### subUnits(number);
 Takes a copper value and returns and object containing each denomination and their value
 ```javascript
-coinPurse.subUnits(1161);
-/*
+import { subUnits } from 'scribe-rpg-coin-purse';
+
+subUnits(1161);
+/* 
  {
   CP: 1,
   SP: 1,
@@ -47,14 +45,15 @@ coinPurse.subUnits(1161);
 Performs a regex on the string to find value denomination pairs returns an array of objects for each
 match containing the match, value and denomination.
 ```javascript
-coinPurse.parser('This sword is worth 6gp. And this potion is 12sp.');
+import { parser } from 'scribe-rpg-coin-purse';
+
+parser('This sword is worth 6gp. And this potion is 12sp.');
 /*
   [
     { match: '6gp', value: '6', denomination: 'GP' },
     { match: '12cp', value: '12', denomination: 'SP' },
   ]
 */
-
 ```
 
 ## Contributing
