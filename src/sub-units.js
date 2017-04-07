@@ -1,33 +1,36 @@
 import * as _ from 'lodash';
 import { COINS, DENOMINATIONS } from './_constants';
 
-export default function subUnits(coppers) {
-  let change = coppers;
+export default function subUnits(coppers, { coins = COINS, denominations = DENOMINATIONS } = {}) {
+  const purse = _.zipObject(coins, Array(coins.length).fill(0));
 
-  // build an empty purse object.
-  const values = _.times(COINS.length, _.constant(0));
-  const purse = _.zipObject(COINS, values);
+  // if coppers is equal to 0, return an empty purse
+  if (coppers === 0) {
+    return purse;
+  }
 
-  // start cursor at the most valuable coin in COINS
-  let cursor = (COINS.length - 1);
+  let change = Math.abs(coppers);
+
+  // start cursor at the most valuable coin in coins
+  let cursor = coins.length - 1;
   let coin;
 
-  do {
+  while (cursor > -1) {
     // get coin at cursor
-    coin = COINS[cursor];
+    coin = coins[cursor];
 
     // get number of whole subUnits in change
-    const subUnit = change / DENOMINATIONS[coin].copperValue;
+    const subUnit = change / denominations[coin].copperValue;
 
     // fill purse
-    purse[coin] = Math.floor(subUnit);
+    purse[coin] = (coppers < 0) ? Math.ceil(subUnit * -1) : purse[coin] = Math.floor(subUnit);
 
     // count remaining change
-    change %= DENOMINATIONS[coin].copperValue;
+    change %= denominations[coin].copperValue;
 
     // move cursor to next denomination
     cursor -= 1;
-  } while (cursor > -1);
+  }
 
   return purse;
 }
