@@ -1,7 +1,10 @@
 import * as _ from 'lodash';
-import { COINS, DENOMINATIONS } from './_constants';
+import { getCoins, keyDenominations } from './lib/denominations';
+import { DENOMINATIONS } from './_constants';
 
-export default function subUnits(coppers, { coins = COINS, denominations = DENOMINATIONS } = {}) {
+export default function subUnits(coppers, { denominations = DENOMINATIONS } = {}) {
+  const keyedDenominations = keyDenominations(denominations);
+  const coins = getCoins(keyedDenominations);
   const purse = _.zipObject(coins, Array(coins.length).fill(0));
 
   // if coppers is equal to 0, return an empty purse
@@ -20,13 +23,13 @@ export default function subUnits(coppers, { coins = COINS, denominations = DENOM
     coin = coins[cursor];
 
     // get number of whole subUnits in change
-    const subUnit = change / denominations[coin].copperValue;
+    const subUnit = change / keyedDenominations[coin].copperValue;
 
     // fill purse
     purse[coin] = (coppers < 0) ? Math.ceil(subUnit * -1) : purse[coin] = Math.floor(subUnit);
 
     // count remaining change
-    change %= denominations[coin].copperValue;
+    change %= keyedDenominations[coin].copperValue;
 
     // move cursor to next denomination
     cursor -= 1;
