@@ -3,7 +3,7 @@ import * as coinPurse from '../../src';
 
 describe('coinPurse', () => {
   it('should have the correct number of exports', () => {
-    should(Object.keys(coinPurse.default).length).equal(3);
+    should(Object.keys(coinPurse.default).length).equal(4);
   });
 
   it('coinPurse.copperValue should exist', () => {
@@ -16,5 +16,9 @@ describe('coinPurse', () => {
 
   it('coinPurse.subUnits should exist', () => {
     should.exist(coinPurse.subUnits);
+  });
+
+  it('coinPurse.values should exist', () => {
+    should.exist(coinPurse.values);
   });
 });
