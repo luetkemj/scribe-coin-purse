@@ -1,9 +1,9 @@
 export default function parser(exp) {
   // parse value/denomination pairs
-  const regexVDP = /([0-9]+[a-z]{2})/gi;
+  const regexVDP = /(-*[0-9]+[a-z]{2})/gi;
 
   // parse value from value/denomination pairs
-  const regexV = /([0-9]*)/;
+  const regexV = /(-*[0-9]*)/;
 
   // parse denomination from value/denomination pairs
   const regexD = /[a-z]{2}/i;
