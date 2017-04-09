@@ -11,53 +11,16 @@ A Fantasy RPG Currency Exchange.
 ## Features
 
 This project makes it easy to:
-* Parse coinage in text.
-* Calculate total copper value from in a string such as '1gp 3sp 6ep 12cp'.
-* Organize coinage by value.
+* Add and subtract multiple denominations
+* Parse strings for value denomination pairs
+* Keep your coins organized
 
-### API
-#### copperValue(string);
-Returns the total coin value in copper
-```javascript
-import { copperValue } from 'scribe-rpg-coin-purse';
+## Documentation
 
-coinPurse.copperValue('3GP, 4cp'); // => 304
-```
-
-#### subUnits(number);
-Takes a copper value and returns and object containing each denomination and their value
-```javascript
-import { subUnits } from 'scribe-rpg-coin-purse';
-
-subUnits(1161);
-/* 
- {
-  CP: 1,
-  SP: 1,
-  EP: 1,
-  GP: 1,
-  PP: 1,
-};
-*/
-```
-
-#### parser(string);
-Performs a regex on the string to find value denomination pairs returns an array of objects for each
-match containing the match, value and denomination.
-```javascript
-import { parser } from 'scribe-rpg-coin-purse';
-
-parser('This sword is worth 6gp. And this potion is 12sp.');
-/*
-  [
-    { match: '6gp', value: '6', denomination: 'GP' },
-    { match: '12cp', value: '12', denomination: 'SP' },
-  ]
-*/
-```
+Docs are available on [github](https://github.com/luetkemj/scribe-coin-purse/wiki)
 
 ## Contributing
 
-Feel free to open an issue or a pull request.
+Feature requests, issues, and contributions are all welcome.
 
 [issues](https://github.com/luetkemj/scribe-coin-purse/issues/new)
