@@ -1,5 +1,5 @@
 import should from 'should';
-import subUnits from '../../src/sub-units';
+import { subUnits } from '../../src';
 
 const denominations = [
   {
@@ -44,12 +44,11 @@ describe('subUnits', () => {
     };
     const actual = subUnits(0);
     should(expected).deepEqual(actual);
-
-    describe('with custom coinage', () => {
-      it('should work', () => {
-        should({ PC: 0, PS: 0, PE: 0, PG: 0, PP: 0 })
-        .deepEqual(subUnits(0, { denominations }));
-      });
+  });
+  describe('with custom coinage', () => {
+    it('should work', () => {
+      should({ PC: 0, PS: 0, PE: 0, PG: 0, PP: 0 })
+      .deepEqual(subUnits(0, { denominations }));
     });
   });
 
@@ -63,12 +62,12 @@ describe('subUnits', () => {
     };
     const actual = subUnits(1161);
     should(expected).deepEqual(actual);
+  });
 
-    describe('with custom coinage', () => {
-      it('should work', () => {
-        should({ PC: 1, PS: 1, PE: 1, PG: 1, PP: 1 })
-        .deepEqual(subUnits(11601, { denominations }));
-      });
+  describe('with custom coinage', () => {
+    it('should work', () => {
+      should({ PC: 1, PS: 1, PE: 1, PG: 1, PP: 1 })
+      .deepEqual(subUnits(11601, { denominations }));
     });
   });
 
@@ -82,12 +81,12 @@ describe('subUnits', () => {
     };
     const actual = subUnits(-1161);
     should(expected).deepEqual(actual);
+  });
 
-    describe('with custom coinage', () => {
-      it('should work', () => {
-        should({ PC: -1, PS: -1, PE: -1, PG: -1, PP: -1 })
-        .deepEqual(subUnits(-11601, { denominations }));
-      });
+  describe('with custom coinage', () => {
+    it('should work', () => {
+      should({ PC: -1, PS: -1, PE: -1, PG: -1, PP: -1 })
+      .deepEqual(subUnits(-11601, { denominations }));
     });
   });
 });

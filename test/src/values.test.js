@@ -1,5 +1,5 @@
 import should from 'should';
-import values from '../../src/values';
+import { values } from '../../src';
 
 const denominations = [
   {
@@ -44,13 +44,15 @@ describe('values', () => {
     }).deepEqual(values(1161));
   });
 
-  it('should work with custom coinage', () => {
-    should({
-      PP: 11601,
-      PG: 116,
-      PE: 23,
-      PS: 11,
-      PC: 1,
-    }).deepEqual(values(11601, { denominations }));
+  describe('with custom coinage', () => {
+    it('should work', () => {
+      should({
+        PP: 11601,
+        PG: 116,
+        PE: 23,
+        PS: 11,
+        PC: 1,
+      }).deepEqual(values(11601, { denominations }));
+    });
   });
 });

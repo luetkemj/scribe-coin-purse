@@ -1,15 +1,5 @@
-import copperValue from './copper-value';
-import parser from './parser';
-import subUnits from './sub-units';
-import total from './total';
-import values from './values';
-
-const coinPurse = {};
-
-coinPurse.copperValue = copperValue;
-coinPurse.parser = parser;
-coinPurse.subUnits = subUnits;
-coinPurse.total = total;
-coinPurse.values = values;
-
-module.exports = coinPurse;
+export copperValue from './copper-value';
+export parser from './parser';
+export subUnits from './sub-units';
+export total from './total';
+export values from './values';

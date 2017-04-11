@@ -1,5 +1,5 @@
 import should from 'should';
-import parser from '../../src/parser';
+import { parser } from '../../src';
 
 describe('parser', () => {
   it('should exist', () => {
