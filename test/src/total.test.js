@@ -1,5 +1,5 @@
 import should from 'should';
-import total from '../../src/total';
+import { total } from '../../src';
 
 const denominations = [
   {
@@ -40,9 +40,11 @@ describe('total', () => {
     should(101).deepEqual(total(['1EP 1EP', '1CP']));
   });
 
-  it('should work with custom denominations', () => {
-    should(-1).deepEqual(total(['1DP', '-2DP'], { denominations }));
-    should(199).deepEqual(total(['1PG', '1PG', '-1DP'], { denominations }));
-    should(201).deepEqual(total(['1PG 1PG', '1DP'], { denominations }));
+  describe('with custom coinage', () => {
+    it('should work', () => {
+      should(-1).deepEqual(total(['1DP', '-2DP'], { denominations }));
+      should(199).deepEqual(total(['1PG', '1PG', '-1DP'], { denominations }));
+      should(201).deepEqual(total(['1PG 1PG', '1DP'], { denominations }));
+    });
   });
 });

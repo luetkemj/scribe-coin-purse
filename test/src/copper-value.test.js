@@ -1,5 +1,5 @@
 import should from 'should';
-import copperValue from '../../src/copper-value';
+import { copperValue } from '../../src';
 
 describe('copperValue', () => {
   it('should exist', () => {
